@@ -1,68 +1,93 @@
-# Microservices-Task
+﻿# Microservices Containerization Assessment
 
-## Overview
-This document provides details on testing various services after running the `docker-compose` file. These services include User, Product, Order, and Gateway Services. Each service has its own endpoints for testing purposes.
+## Skill Test 1: Cloud and Containers
 
----
+Submitted by: Aashish Gautam
 
-## Services and Endpoints
+GitHub Repository:
+https://github.com/aashish579/Microservices-Docker-Compose-Task
 
-### **User Service**
-- **Base URL:** `http://localhost:3000`
-- **Endpoints:**
-  - **List Users:**  
-    ```
-    curl http://localhost:3000/users
-    ```
-    Or open in your browser: [http://localhost:3000/users](http://localhost:3000/users)
+## Project Overview
 
----
+This project demonstrates containerization of four Node.js
+microservices using Docker and Docker Compose.
 
-### **Product Service**
-- **Base URL:** `http://localhost:3001`
-- **Endpoints:**
-  - **List Products:**  
-    ```
-    curl http://localhost:3001/products
-    ```
-    Or open in your browser: [http://localhost:3001/products](http://localhost:3001/products)
+## Microservices
 
----
+| Service | Port | Endpoint |
+|---|---|---|
+| User Service | 3000 | /users |
+| Product Service | 3001 | /products |
+| Order Service | 3002 | /orders |
+| Gateway Service | 3003 | /health |
 
-### **Order Service**
-- **Base URL:** `http://localhost:3002`
-- **Endpoints:**
-  - **List Orders:**  
-    ```
-    curl http://localhost:3002/orders
-    ```
-    Or open in your browser: [http://localhost:3002/orders](http://localhost:3002/orders)
+## Technologies
 
----
+- Node.js
+- Express.js
+- Docker
+- Docker Compose
+- Docker Bridge Network
+- REST APIs
 
-### **Gateway Service**
-- **Base URL:** `http://localhost:3003/api`
-- **Endpoints:**
-  - **Users:**  
-    ```
-    curl http://localhost:3003/api/users
-    ```
-  - **Products:**  
-    ```
-    curl http://localhost:3003/api/products
-    ```
-  - **Orders:**  
-    ```
-    curl http://localhost:3003/api/orders
-    ```
+## Setup Instructions
 
----
+1. Install Docker Desktop and Git.
+2. Clone the repository.
+3. Navigate to the project directory.
+4. Execute: docker compose up --build -d
+5. Verify: docker compose ps
 
-## Instructions
-1. Start all services using the `docker-compose` file:
-   ```
-   docker-compose up
-   ```
-2. Once the services are running, use the above endpoints to verify the functionality.
+## API Testing
 
-Happy testing!
+User Service:
+http://localhost:3000/users
+
+Product Service:
+http://localhost:3001/products
+
+Order Service:
+http://localhost:3002/orders
+
+Gateway Health:
+http://localhost:3003/health
+
+Gateway User API:
+http://localhost:3003/api/users
+
+Gateway Product API:
+http://localhost:3003/api/products
+
+Gateway Order API:
+http://localhost:3003/api/orders
+
+## Test Results
+
+All four Docker containers started successfully.
+
+All seven endpoints returned HTTP 200.
+
+The Gateway Service successfully communicates with the
+User, Product and Order services through the Docker network.
+
+## Troubleshooting
+
+Docker not running:
+Start Docker Desktop and verify using docker info.
+
+Port conflict:
+Stop the process occupying ports 3000-3003.
+
+Container startup failure:
+Run docker compose logs.
+
+Build failure:
+Run docker compose up --build -d.
+
+## Evidence
+
+Screenshots are available in the screenshots folder.
+
+## Stop Containers
+
+docker compose down
